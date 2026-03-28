@@ -1,0 +1,128 @@
+[
+  {
+    "type": "execution_started",
+    "executionId": "DEMO",
+    "workflowId": "tmpl-sales-brief",
+    "timestamp": "2025-01-01T00:00:00.000Z",
+    "delayMs": 0
+  },
+  {
+    "type": "node_started",
+    "executionId": "DEMO",
+    "nodeId": "node-sb-input",
+    "nodeType": "textInput",
+    "timestamp": "2025-01-01T00:00:00.100Z",
+    "delayMs": 300
+  },
+  {
+    "type": "node_completed",
+    "executionId": "DEMO",
+    "nodeId": "node-sb-input",
+    "nodeType": "textInput",
+    "output": "Acme Manufacturing Co. — $50M revenue, 280 employees. Currently using legacy ERP (SAP R/2 from 2008). Operations manager mentioned pain points: manual production scheduling, 3-day delay in demand forecasting, frequent stockouts on top 20 SKUs. Budget cycle starts Q2. Tech decision made by VP Operations (Sarah Chen) and IT Director. Competitors using our platform: Apex Industrial, Global Parts Inc. Previous vendor: Oracle (churned 18 months ago due to implementation complexity).",
+    "durationMs": 2,
+    "timestamp": "2025-01-01T00:00:00.400Z",
+    "delayMs": 300
+  },
+  {
+    "type": "node_started",
+    "executionId": "DEMO",
+    "nodeId": "node-sb-chain",
+    "nodeType": "llmChain",
+    "timestamp": "2025-01-01T00:00:00.500Z",
+    "delayMs": 400
+  },
+  {
+    "type": "node_completed",
+    "executionId": "DEMO",
+    "nodeId": "node-sb-chain",
+    "nodeType": "llmChain",
+    "output": "**Sales Brief: Acme Manufacturing Co.**\n\nAcme is a high-priority mid-market manufacturing opportunity with a clear pain-driven buying cycle. Their aging SAP R/2 ERP is generating measurable operational drag — a 3-day forecasting lag and recurring top-SKU stockouts likely represent $2–4M in annual lost revenue. The Oracle churn 18 months ago signals active dissatisfaction and receptiveness to a lighter-weight solution.\n\n**Value Proposition:** Position as the API-first, rapid-deployment alternative to legacy ERP integrations. Lead with the demand forecasting automation use case, supported by the Apex Industrial and Global Parts Inc. reference wins in the same vertical. Emphasize time-to-value (weeks, not months).\n\n**Recommended Approach:** Request a 30-minute executive demo with Sarah Chen (VP Operations) and the IT Director. Open with the stockout cost calculator to anchor the ROI conversation. Target a Q2 close aligned to their budget cycle.",
+    "durationMs": 3640,
+    "tokensUsed": 521,
+    "timestamp": "2025-01-01T00:00:04.400Z",
+    "delayMs": 3600
+  },
+  {
+    "type": "node_started",
+    "executionId": "DEMO",
+    "nodeId": "node-sb-extractor",
+    "nodeType": "structuredExtractor",
+    "timestamp": "2025-01-01T00:00:04.500Z",
+    "delayMs": 400
+  },
+  {
+    "type": "node_completed",
+    "executionId": "DEMO",
+    "nodeId": "node-sb-extractor",
+    "nodeType": "structuredExtractor",
+    "output": {
+      "company_name": "Acme Manufacturing Co.",
+      "industry": "Manufacturing",
+      "pain_points": [
+        "Manual production scheduling with legacy SAP R/2 ERP (2008)",
+        "3-day delay in demand forecasting causing inventory shortfalls",
+        "Frequent stockouts on top 20 SKUs impacting revenue"
+      ],
+      "value_props": [
+        "API-first rapid deployment vs. legacy ERP implementation complexity",
+        "Demand forecasting automation directly addressing core pain point",
+        "Proven vertical wins: Apex Industrial and Global Parts Inc."
+      ],
+      "next_steps": [
+        "Schedule executive demo with Sarah Chen (VP Ops) and IT Director",
+        "Prepare stockout cost calculator showing $2–4M annual impact",
+        "Target Q2 budget cycle close"
+      ],
+      "priority_score": 87
+    },
+    "durationMs": 1460,
+    "tokensUsed": 298,
+    "timestamp": "2025-01-01T00:00:06.000Z",
+    "delayMs": 1400
+  },
+  {
+    "type": "node_started",
+    "executionId": "DEMO",
+    "nodeId": "node-sb-output",
+    "nodeType": "jsonOutput",
+    "timestamp": "2025-01-01T00:00:06.100Z",
+    "delayMs": 300
+  },
+  {
+    "type": "node_completed",
+    "executionId": "DEMO",
+    "nodeId": "node-sb-output",
+    "nodeType": "jsonOutput",
+    "output": {
+      "company_name": "Acme Manufacturing Co.",
+      "industry": "Manufacturing",
+      "pain_points": [
+        "Manual production scheduling with legacy SAP R/2 ERP (2008)",
+        "3-day delay in demand forecasting causing inventory shortfalls",
+        "Frequent stockouts on top 20 SKUs impacting revenue"
+      ],
+      "value_props": [
+        "API-first rapid deployment vs. legacy ERP implementation complexity",
+        "Demand forecasting automation directly addressing core pain point",
+        "Proven vertical wins: Apex Industrial and Global Parts Inc."
+      ],
+      "next_steps": [
+        "Schedule executive demo with Sarah Chen (VP Ops) and IT Director",
+        "Prepare stockout cost calculator showing $2–4M annual impact",
+        "Target Q2 budget cycle close"
+      ],
+      "priority_score": 87
+    },
+    "durationMs": 1,
+    "timestamp": "2025-01-01T00:00:06.400Z",
+    "delayMs": 300
+  },
+  {
+    "type": "execution_completed",
+    "executionId": "DEMO",
+    "durationMs": 6400,
+    "timestamp": "2025-01-01T00:00:06.500Z",
+    "delayMs": 300
+  }
+]

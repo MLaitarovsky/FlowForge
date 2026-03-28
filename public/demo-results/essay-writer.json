@@ -1,0 +1,71 @@
+[
+  {
+    "type": "execution_started",
+    "executionId": "DEMO",
+    "workflowId": "tmpl-essay-writer",
+    "timestamp": "2025-01-01T00:00:00.000Z",
+    "delayMs": 0
+  },
+  {
+    "type": "node_started",
+    "executionId": "DEMO",
+    "nodeId": "node-ew-input",
+    "nodeType": "textInput",
+    "timestamp": "2025-01-01T00:00:00.100Z",
+    "delayMs": 300
+  },
+  {
+    "type": "node_completed",
+    "executionId": "DEMO",
+    "nodeId": "node-ew-input",
+    "nodeType": "textInput",
+    "output": "The impact of artificial intelligence on modern society",
+    "durationMs": 2,
+    "timestamp": "2025-01-01T00:00:00.400Z",
+    "delayMs": 300
+  },
+  {
+    "type": "node_started",
+    "executionId": "DEMO",
+    "nodeId": "node-ew-chain",
+    "nodeType": "llmChain",
+    "timestamp": "2025-01-01T00:00:00.500Z",
+    "delayMs": 400
+  },
+  {
+    "type": "node_completed",
+    "executionId": "DEMO",
+    "nodeId": "node-ew-chain",
+    "nodeType": "llmChain",
+    "output": "## The Dual Edge of Artificial Intelligence\n\nArtificial intelligence has emerged as one of the most transformative forces in modern society, reshaping how we work, communicate, and make decisions. From recommendation algorithms that curate our digital experiences to diagnostic tools that assist physicians, AI permeates daily life in ways both visible and invisible. This technological revolution brings extraordinary promise alongside profound challenges that demand careful consideration.\n\nThe benefits of AI are undeniable. In healthcare, machine learning models detect cancers earlier than human radiologists, potentially saving millions of lives. In climate science, AI optimizes energy grids and accelerates the discovery of sustainable materials. Economically, automation boosts productivity and creates entirely new industries, from autonomous vehicle engineering to AI ethics consulting. These advances democratize expertise, giving individuals access to capabilities once reserved for elite institutions.\n\nYet the same power that makes AI revolutionary also makes it dangerous if ungoverned. Algorithmic bias perpetuates systemic discrimination when trained on flawed historical data. Surveillance technologies threaten civil liberties. And the rapid displacement of workers—particularly in routine cognitive and physical roles—risks deepening inequality if society fails to invest in retraining and social safety nets. The path forward requires not a choice between progress and caution, but a commitment to building AI systems that are transparent, accountable, and genuinely beneficial to all of humanity.",
+    "durationMs": 3280,
+    "tokensUsed": 512,
+    "timestamp": "2025-01-01T00:00:03.900Z",
+    "delayMs": 3200
+  },
+  {
+    "type": "node_started",
+    "executionId": "DEMO",
+    "nodeId": "node-ew-output",
+    "nodeType": "textOutput",
+    "timestamp": "2025-01-01T00:00:04.000Z",
+    "delayMs": 400
+  },
+  {
+    "type": "node_completed",
+    "executionId": "DEMO",
+    "nodeId": "node-ew-output",
+    "nodeType": "textOutput",
+    "output": "## The Dual Edge of Artificial Intelligence\n\nArtificial intelligence has emerged as one of the most transformative forces in modern society, reshaping how we work, communicate, and make decisions. From recommendation algorithms that curate our digital experiences to diagnostic tools that assist physicians, AI permeates daily life in ways both visible and invisible. This technological revolution brings extraordinary promise alongside profound challenges that demand careful consideration.\n\nThe benefits of AI are undeniable. In healthcare, machine learning models detect cancers earlier than human radiologists, potentially saving millions of lives. In climate science, AI optimizes energy grids and accelerates the discovery of sustainable materials. Economically, automation boosts productivity and creates entirely new industries, from autonomous vehicle engineering to AI ethics consulting. These advances democratize expertise, giving individuals access to capabilities once reserved for elite institutions.\n\nYet the same power that makes AI revolutionary also makes it dangerous if ungoverned. Algorithmic bias perpetuates systemic discrimination when trained on flawed historical data. Surveillance technologies threaten civil liberties. And the rapid displacement of workers—particularly in routine cognitive and physical roles—risks deepening inequality if society fails to invest in retraining and social safety nets. The path forward requires not a choice between progress and caution, but a commitment to building AI systems that are transparent, accountable, and genuinely beneficial to all of humanity.",
+    "durationMs": 2,
+    "timestamp": "2025-01-01T00:00:04.100Z",
+    "delayMs": 300
+  },
+  {
+    "type": "execution_completed",
+    "executionId": "DEMO",
+    "durationMs": 4100,
+    "timestamp": "2025-01-01T00:00:04.200Z",
+    "delayMs": 300
+  }
+]

@@ -1,0 +1,96 @@
+[
+  {
+    "type": "execution_started",
+    "executionId": "DEMO",
+    "workflowId": "tmpl-sentiment-analyzer",
+    "timestamp": "2025-01-01T00:00:00.000Z",
+    "delayMs": 0
+  },
+  {
+    "type": "node_started",
+    "executionId": "DEMO",
+    "nodeId": "node-sa-input",
+    "nodeType": "textInput",
+    "timestamp": "2025-01-01T00:00:00.100Z",
+    "delayMs": 300
+  },
+  {
+    "type": "node_completed",
+    "executionId": "DEMO",
+    "nodeId": "node-sa-input",
+    "nodeType": "textInput",
+    "output": "This product is absolutely fantastic! Best purchase I have made all year.",
+    "durationMs": 2,
+    "timestamp": "2025-01-01T00:00:00.400Z",
+    "delayMs": 300
+  },
+  {
+    "type": "node_started",
+    "executionId": "DEMO",
+    "nodeId": "node-sa-llm",
+    "nodeType": "llmPrompt",
+    "timestamp": "2025-01-01T00:00:00.500Z",
+    "delayMs": 400
+  },
+  {
+    "type": "node_completed",
+    "executionId": "DEMO",
+    "nodeId": "node-sa-llm",
+    "nodeType": "llmPrompt",
+    "output": "positive",
+    "durationMs": 920,
+    "tokensUsed": 42,
+    "timestamp": "2025-01-01T00:00:01.500Z",
+    "delayMs": 900
+  },
+  {
+    "type": "node_started",
+    "executionId": "DEMO",
+    "nodeId": "node-sa-branch",
+    "nodeType": "conditionalBranch",
+    "timestamp": "2025-01-01T00:00:01.600Z",
+    "delayMs": 400
+  },
+  {
+    "type": "node_completed",
+    "executionId": "DEMO",
+    "nodeId": "node-sa-branch",
+    "nodeType": "conditionalBranch",
+    "output": { "branch": "true", "data": "positive" },
+    "durationMs": 1,
+    "timestamp": "2025-01-01T00:00:01.700Z",
+    "delayMs": 300
+  },
+  {
+    "type": "node_started",
+    "executionId": "DEMO",
+    "nodeId": "node-sa-pos",
+    "nodeType": "textOutput",
+    "timestamp": "2025-01-01T00:00:01.800Z",
+    "delayMs": 300
+  },
+  {
+    "type": "node_completed",
+    "executionId": "DEMO",
+    "nodeId": "node-sa-pos",
+    "nodeType": "textOutput",
+    "output": "positive",
+    "durationMs": 1,
+    "timestamp": "2025-01-01T00:00:01.900Z",
+    "delayMs": 300
+  },
+  {
+    "type": "node_skipped",
+    "executionId": "DEMO",
+    "nodeId": "node-sa-neg",
+    "timestamp": "2025-01-01T00:00:02.000Z",
+    "delayMs": 200
+  },
+  {
+    "type": "execution_completed",
+    "executionId": "DEMO",
+    "durationMs": 2000,
+    "timestamp": "2025-01-01T00:00:02.100Z",
+    "delayMs": 300
+  }
+]

@@ -1,0 +1,71 @@
+[
+  {
+    "type": "execution_started",
+    "executionId": "DEMO",
+    "workflowId": "tmpl-text-summarizer",
+    "timestamp": "2025-01-01T00:00:00.000Z",
+    "delayMs": 0
+  },
+  {
+    "type": "node_started",
+    "executionId": "DEMO",
+    "nodeId": "node-ts-input",
+    "nodeType": "textInput",
+    "timestamp": "2025-01-01T00:00:00.100Z",
+    "delayMs": 300
+  },
+  {
+    "type": "node_completed",
+    "executionId": "DEMO",
+    "nodeId": "node-ts-input",
+    "nodeType": "textInput",
+    "output": "Artificial intelligence is transforming every industry. From healthcare to finance, AI systems are automating complex tasks, improving decision-making, and uncovering insights from vast datasets. Machine learning models, trained on billions of examples, can now recognize speech, translate languages, and generate human-like text with remarkable accuracy. However, these advances raise important questions about job displacement, privacy, and algorithmic bias that society must address.",
+    "durationMs": 3,
+    "timestamp": "2025-01-01T00:00:00.400Z",
+    "delayMs": 300
+  },
+  {
+    "type": "node_started",
+    "executionId": "DEMO",
+    "nodeId": "node-ts-llm",
+    "nodeType": "llmPrompt",
+    "timestamp": "2025-01-01T00:00:00.500Z",
+    "delayMs": 400
+  },
+  {
+    "type": "node_completed",
+    "executionId": "DEMO",
+    "nodeId": "node-ts-llm",
+    "nodeType": "llmPrompt",
+    "output": "## Summary\n\nArtificial intelligence is rapidly reshaping industries across the globe, from healthcare to finance.\n\n**Key Points:**\n- AI automates complex tasks and improves decision-making at scale\n- ML models trained on massive datasets can now match or exceed human performance on specific tasks\n- Critical societal concerns remain around job displacement, privacy, and algorithmic bias\n\n**Takeaway:** While AI offers transformative potential, responsible development and ethical governance are essential to ensure equitable outcomes.",
+    "durationMs": 1840,
+    "tokensUsed": 287,
+    "timestamp": "2025-01-01T00:00:02.400Z",
+    "delayMs": 1800
+  },
+  {
+    "type": "node_started",
+    "executionId": "DEMO",
+    "nodeId": "node-ts-output",
+    "nodeType": "textOutput",
+    "timestamp": "2025-01-01T00:00:02.500Z",
+    "delayMs": 400
+  },
+  {
+    "type": "node_completed",
+    "executionId": "DEMO",
+    "nodeId": "node-ts-output",
+    "nodeType": "textOutput",
+    "output": "## Summary\n\nArtificial intelligence is rapidly reshaping industries across the globe, from healthcare to finance.\n\n**Key Points:**\n- AI automates complex tasks and improves decision-making at scale\n- ML models trained on massive datasets can now match or exceed human performance on specific tasks\n- Critical societal concerns remain around job displacement, privacy, and algorithmic bias\n\n**Takeaway:** While AI offers transformative potential, responsible development and ethical governance are essential to ensure equitable outcomes.",
+    "durationMs": 2,
+    "timestamp": "2025-01-01T00:00:02.600Z",
+    "delayMs": 300
+  },
+  {
+    "type": "execution_completed",
+    "executionId": "DEMO",
+    "durationMs": 2600,
+    "timestamp": "2025-01-01T00:00:02.700Z",
+    "delayMs": 300
+  }
+]

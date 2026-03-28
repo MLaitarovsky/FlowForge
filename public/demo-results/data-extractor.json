@@ -1,0 +1,85 @@
+[
+  {
+    "type": "execution_started",
+    "executionId": "DEMO",
+    "workflowId": "tmpl-data-extractor",
+    "timestamp": "2025-01-01T00:00:00.000Z",
+    "delayMs": 0
+  },
+  {
+    "type": "node_started",
+    "executionId": "DEMO",
+    "nodeId": "node-de-input",
+    "nodeType": "textInput",
+    "timestamp": "2025-01-01T00:00:00.100Z",
+    "delayMs": 300
+  },
+  {
+    "type": "node_completed",
+    "executionId": "DEMO",
+    "nodeId": "node-de-input",
+    "nodeType": "textInput",
+    "output": "John Smith, 42, john.smith@example.com, Senior Software Engineer at Acme Corporation. He joined in 2019 and is based in San Francisco, CA.",
+    "durationMs": 2,
+    "timestamp": "2025-01-01T00:00:00.400Z",
+    "delayMs": 300
+  },
+  {
+    "type": "node_started",
+    "executionId": "DEMO",
+    "nodeId": "node-de-extractor",
+    "nodeType": "structuredExtractor",
+    "timestamp": "2025-01-01T00:00:00.500Z",
+    "delayMs": 400
+  },
+  {
+    "type": "node_completed",
+    "executionId": "DEMO",
+    "nodeId": "node-de-extractor",
+    "nodeType": "structuredExtractor",
+    "output": {
+      "name": "John Smith",
+      "age": 42,
+      "email": "john.smith@example.com",
+      "job_title": "Senior Software Engineer",
+      "company": "Acme Corporation",
+      "location": "San Francisco, CA"
+    },
+    "durationMs": 1420,
+    "tokensUsed": 198,
+    "timestamp": "2025-01-01T00:00:02.000Z",
+    "delayMs": 1400
+  },
+  {
+    "type": "node_started",
+    "executionId": "DEMO",
+    "nodeId": "node-de-output",
+    "nodeType": "jsonOutput",
+    "timestamp": "2025-01-01T00:00:02.100Z",
+    "delayMs": 300
+  },
+  {
+    "type": "node_completed",
+    "executionId": "DEMO",
+    "nodeId": "node-de-output",
+    "nodeType": "jsonOutput",
+    "output": {
+      "name": "John Smith",
+      "age": 42,
+      "email": "john.smith@example.com",
+      "job_title": "Senior Software Engineer",
+      "company": "Acme Corporation",
+      "location": "San Francisco, CA"
+    },
+    "durationMs": 1,
+    "timestamp": "2025-01-01T00:00:02.200Z",
+    "delayMs": 300
+  },
+  {
+    "type": "execution_completed",
+    "executionId": "DEMO",
+    "durationMs": 2200,
+    "timestamp": "2025-01-01T00:00:02.300Z",
+    "delayMs": 300
+  }
+]

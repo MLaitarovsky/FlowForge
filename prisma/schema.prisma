@@ -1,0 +1,146 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String     @id @default(cuid())
+  email     String     @unique
+  name      String?
+  password  String?
+  image     String?
+  apiKeys   ApiKey[]
+  workflows Workflow[]
+  createdAt DateTime   @default(now())
+
+  // NextAuth
+  accounts Account[]
+  sessions Session[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model ApiKey {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  provider     String
+  encryptedKey String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([userId, provider])
+}
+
+model Workflow {
+  id           String         @id @default(cuid())
+  name         String
+  description  String?
+  userId       String
+  user         User           @relation(fields: [userId], references: [id])
+  nodes        WorkflowNode[]
+  edges        WorkflowEdge[]
+  executions   Execution[]
+  isTemplate   Boolean        @default(false)
+  templateSlug String?        @unique
+  demoResults  Json?
+  config       Json?
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+}
+
+model WorkflowNode {
+  id         String   @id @default(cuid())
+  workflowId String
+  workflow   Workflow @relation(fields: [workflowId], references: [id], onDelete: Cascade)
+  type       String
+  label      String
+  positionX  Float
+  positionY  Float
+  config     Json
+  createdAt  DateTime @default(now())
+}
+
+model WorkflowEdge {
+  id         String   @id @default(cuid())
+  workflowId String
+  workflow   Workflow @relation(fields: [workflowId], references: [id], onDelete: Cascade)
+  sourceId   String
+  targetId   String
+  sourcePort String?
+  targetPort String?
+}
+
+model Execution {
+  id          String          @id @default(cuid())
+  workflowId  String
+  workflow    Workflow        @relation(fields: [workflowId], references: [id])
+  status      ExecutionStatus @default(PENDING)
+  isDemo      Boolean         @default(false)
+  startedAt   DateTime?
+  endedAt     DateTime?
+  totalTokens Int             @default(0)
+  totalCost   Float           @default(0)
+  logs        ExecutionLog[]
+  createdAt   DateTime        @default(now())
+}
+
+model ExecutionLog {
+  id          String    @id @default(cuid())
+  executionId String
+  execution   Execution @relation(fields: [executionId], references: [id], onDelete: Cascade)
+  nodeId      String
+  status      String
+  input       Json?
+  output      Json?
+  error       String?
+  tokenUsage  Int?
+  costUsd     Float?
+  startedAt   DateTime
+  endedAt     DateTime?
+}
+
+enum ExecutionStatus {
+  PENDING
+  RUNNING
+  COMPLETED
+  FAILED
+  CANCELLED
+}

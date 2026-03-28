@@ -1,0 +1,112 @@
+[
+  {
+    "type": "execution_started",
+    "executionId": "DEMO",
+    "workflowId": "tmpl-legal-doc-analyzer",
+    "timestamp": "2025-01-01T00:00:00.000Z",
+    "delayMs": 0
+  },
+  {
+    "type": "node_started",
+    "executionId": "DEMO",
+    "nodeId": "node-la-input",
+    "nodeType": "textInput",
+    "timestamp": "2025-01-01T00:00:00.100Z",
+    "delayMs": 300
+  },
+  {
+    "type": "node_completed",
+    "executionId": "DEMO",
+    "nodeId": "node-la-input",
+    "nodeType": "textInput",
+    "output": "MUTUAL NON-DISCLOSURE AGREEMENT\n\nThis Agreement is entered into as of January 15, 2025 (\"Effective Date\") between TechCorp Inc., a Delaware corporation (\"Company A\"), and Innovate Solutions LLC, a California limited liability company (\"Company B\").\n\nTERM: This Agreement shall remain in effect for a period of two (2) years from the Effective Date.\n\nCONFIDENTIAL INFORMATION: Each party may disclose proprietary technical data, business plans, customer lists, and financial projections.\n\nOBLIGATIONS: Each party agrees to: (i) maintain confidentiality using the same degree of care as its own confidential information, (ii) not disclose to third parties without prior written consent, (iii) use information solely for evaluating the potential business relationship.\n\nEXCLUSIONS: Obligations do not apply to information that is publicly available, independently developed, or received from a third party without restriction.\n\nREMEDIES: Each party acknowledges that breach would cause irreparable harm and agrees that injunctive relief is an appropriate remedy.\n\nGOVERNING LAW: This Agreement shall be governed by the laws of the State of Delaware.",
+    "durationMs": 2,
+    "timestamp": "2025-01-01T00:00:00.400Z",
+    "delayMs": 300
+  },
+  {
+    "type": "node_started",
+    "executionId": "DEMO",
+    "nodeId": "node-la-chain",
+    "nodeType": "llmChain",
+    "timestamp": "2025-01-01T00:00:00.500Z",
+    "delayMs": 400
+  },
+  {
+    "type": "node_completed",
+    "executionId": "DEMO",
+    "nodeId": "node-la-chain",
+    "nodeType": "llmChain",
+    "output": "**Executive Summary:** TechCorp Inc. and Innovate Solutions LLC have entered into a standard mutual NDA with a 2-year term and broad scope covering technical data, business plans, and financial information. The agreement is largely balanced but contains notably broad confidentiality obligations without a residual knowledge carve-out, which warrants careful review before execution.\n\n**Recommendation:** REVIEW — The agreement is standard in structure but the absence of a residual knowledge clause and the broad inclusion of \"financial projections\" as protected information may create downstream compliance challenges. Legal counsel should confirm these provisions align with company policy.",
+    "durationMs": 4120,
+    "tokensUsed": 634,
+    "timestamp": "2025-01-01T00:00:04.900Z",
+    "delayMs": 4200
+  },
+  {
+    "type": "node_started",
+    "executionId": "DEMO",
+    "nodeId": "node-la-extractor",
+    "nodeType": "structuredExtractor",
+    "timestamp": "2025-01-01T00:00:05.000Z",
+    "delayMs": 400
+  },
+  {
+    "type": "node_completed",
+    "executionId": "DEMO",
+    "nodeId": "node-la-extractor",
+    "nodeType": "structuredExtractor",
+    "output": {
+      "parties": ["TechCorp Inc.", "Innovate Solutions LLC"],
+      "effective_date": "January 15, 2025",
+      "term": "2 years",
+      "governing_law": "Delaware",
+      "key_risks": [
+        "No residual knowledge carve-out — employees may be restricted from using retained knowledge of general concepts",
+        "Broad inclusion of 'financial projections' as protected information increases compliance burden",
+        "Injunctive relief as default remedy may be aggressive for a standard mutual NDA"
+      ],
+      "recommendation": "REVIEW"
+    },
+    "durationMs": 1580,
+    "tokensUsed": 312,
+    "timestamp": "2025-01-01T00:00:06.600Z",
+    "delayMs": 1500
+  },
+  {
+    "type": "node_started",
+    "executionId": "DEMO",
+    "nodeId": "node-la-output",
+    "nodeType": "jsonOutput",
+    "timestamp": "2025-01-01T00:00:06.700Z",
+    "delayMs": 300
+  },
+  {
+    "type": "node_completed",
+    "executionId": "DEMO",
+    "nodeId": "node-la-output",
+    "nodeType": "jsonOutput",
+    "output": {
+      "parties": ["TechCorp Inc.", "Innovate Solutions LLC"],
+      "effective_date": "January 15, 2025",
+      "term": "2 years",
+      "governing_law": "Delaware",
+      "key_risks": [
+        "No residual knowledge carve-out — employees may be restricted from using retained knowledge of general concepts",
+        "Broad inclusion of 'financial projections' as protected information increases compliance burden",
+        "Injunctive relief as default remedy may be aggressive for a standard mutual NDA"
+      ],
+      "recommendation": "REVIEW"
+    },
+    "durationMs": 1,
+    "timestamp": "2025-01-01T00:00:07.000Z",
+    "delayMs": 300
+  },
+  {
+    "type": "execution_completed",
+    "executionId": "DEMO",
+    "durationMs": 7000,
+    "timestamp": "2025-01-01T00:00:07.100Z",
+    "delayMs": 300
+  }
+]
