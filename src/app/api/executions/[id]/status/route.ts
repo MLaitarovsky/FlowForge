@@ -1,6 +1,8 @@
 import { getSession } from '@/lib/auth'
 import { prisma } from '@/lib/db'
 import { subscribeToExecution } from '@/lib/events/execution-bus'
+
+export const dynamic = 'force-dynamic'
 import type { ExecutionEvent } from '@/types/execution'
 
 function sseMessage(event: ExecutionEvent): string {

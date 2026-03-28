@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getSession } from '@/lib/auth'
 import { prisma } from '@/lib/db'
 
+export const dynamic = 'force-dynamic'
+
 async function getOwnedWorkflow(workflowId: string, userId: string) {
   return prisma.workflow.findFirst({
     where: { id: workflowId, userId },

@@ -3,6 +3,8 @@ import { Prisma } from '@prisma/client'
 import { getSession } from '@/lib/auth'
 import { prisma } from '@/lib/db'
 import type { WorkflowNodeDTO, WorkflowEdgeDTO } from '@/types/workflow'
+
+export const dynamic = 'force-dynamic'
 import type { NodeType } from '@/types/nodes'
 
 const VALID_NODE_TYPES = new Set<string>([

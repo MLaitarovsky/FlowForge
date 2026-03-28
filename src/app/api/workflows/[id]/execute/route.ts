@@ -3,6 +3,8 @@ import { Queue } from 'bullmq'
 import { getSession } from '@/lib/auth'
 import { prisma } from '@/lib/db'
 import { topoSort } from '@/worker/graph'
+
+export const dynamic = 'force-dynamic'
 import { QUEUE_NAME } from '@/worker/constants'
 
 const REDIS_URL = process.env.REDIS_URL ?? 'redis://localhost:6381'

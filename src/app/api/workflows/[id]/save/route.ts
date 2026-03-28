@@ -4,6 +4,8 @@ import { getSession } from '@/lib/auth'
 import { prisma } from '@/lib/db'
 import type { WorkflowNodeDTO, WorkflowEdgeDTO } from '@/types/workflow'
 
+export const dynamic = 'force-dynamic'
+
 export async function POST(
   req: NextRequest,
   { params }: { params: { id: string } }

@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server'
 import { getSession } from '@/lib/auth'
 import { prisma } from '@/lib/db'
 
+export const dynamic = 'force-dynamic'
+
 export async function POST(
   _req: Request,
   { params }: { params: { slug: string } }
