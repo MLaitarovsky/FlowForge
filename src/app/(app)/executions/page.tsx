@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { formatDistanceToNow } from 'date-fns'
 import { prisma } from '@/lib/db'
 import { getSession } from '@/lib/auth'
+
+export const dynamic = 'force-dynamic'
 import { redirect } from 'next/navigation'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'

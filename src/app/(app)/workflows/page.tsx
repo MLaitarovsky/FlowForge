@@ -1,5 +1,7 @@
 import { getSession } from '@/lib/auth'
 import { prisma } from '@/lib/db'
+
+export const dynamic = 'force-dynamic'
 import { WorkflowCard } from '@/components/workflows/WorkflowCard'
 import { NewWorkflowDialog } from '@/components/workflows/NewWorkflowDialog'
 import { ImportWorkflowButton } from '@/components/workflows/ImportWorkflowButton'
