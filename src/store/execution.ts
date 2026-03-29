@@ -11,6 +11,7 @@ interface ExecutionState {
   status: ExecutionStatus
   nodeStatuses: Record<string, NodeStatus>
   nodeOutputs: Record<string, unknown>
+  nodeErrors: Record<string, string>
   error: string | null
   isRunning: boolean
   isDemo: boolean
@@ -34,6 +35,7 @@ export const useExecutionStore = create<ExecutionState>((set, get) => ({
   status: 'idle',
   nodeStatuses: {},
   nodeOutputs: {},
+  nodeErrors: {},
   error: null,
   isRunning: false,
   isDemo: false,
@@ -47,6 +49,7 @@ export const useExecutionStore = create<ExecutionState>((set, get) => ({
       status: 'pending',
       nodeStatuses: {},
       nodeOutputs: {},
+      nodeErrors: {},
       error: null,
       isRunning: true,
       isDemo: false,
@@ -104,6 +107,7 @@ export const useExecutionStore = create<ExecutionState>((set, get) => ({
       status: 'pending',
       nodeStatuses: {},
       nodeOutputs: {},
+      nodeErrors: {},
       error: null,
       isRunning: true,
       isDemo: true,
@@ -159,6 +163,7 @@ export const useExecutionStore = create<ExecutionState>((set, get) => ({
       status: 'idle',
       nodeStatuses: {},
       nodeOutputs: {},
+      nodeErrors: {},
       error: null,
       isRunning: false,
       isDemo: false,
@@ -181,6 +186,7 @@ function handleEvent(event: ExecutionEvent) {
       case 'node_error':
         return {
           nodeStatuses: { ...state.nodeStatuses, [event.nodeId]: 'error' },
+          nodeErrors: { ...state.nodeErrors, [event.nodeId]: event.error },
         }
       case 'node_skipped':
         return {

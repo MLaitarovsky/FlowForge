@@ -5,7 +5,7 @@ import { useWorkflowStore } from '@/store/workflow'
 import { useExecutionStore } from '@/store/execution'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { ChevronDown, ChevronUp } from 'lucide-react'
+import { ChevronDown, ChevronUp, ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { JsonTreeView } from '@/components/ui/json-tree-view'
 
@@ -27,10 +27,11 @@ export function OutputPanel() {
   const [collapsed, setCollapsed] = useState(false)
   const [height, setHeight] = useState(DEFAULT_HEIGHT)
   const [tab, setTab] = useState<Tab>('outputs')
+  const [expandedLogNode, setExpandedLogNode] = useState<string | null>(null)
   const heightRef = useRef(DEFAULT_HEIGHT)
 
   const { nodes } = useWorkflowStore()
-  const { nodeStatuses, nodeOutputs, status, error } = useExecutionStore()
+  const { nodeStatuses, nodeOutputs, nodeErrors, status, error } = useExecutionStore()
 
   const onDragStart = useCallback((e: React.MouseEvent) => {
     const startY = e.clientY
@@ -152,14 +153,39 @@ export function OutputPanel() {
             <>
               {nodesWithStatus.map((node) => {
                 const s = nodeStatuses[node.id]
+                const isExpanded = expandedLogNode === node.id
+                const hasDetail = nodeOutputs[node.id] !== undefined || nodeErrors[node.id]
                 return (
-                  <div key={node.id} className="flex items-center gap-2 text-xs">
-                    <Badge
-                      className={cn('text-[10px] h-4 shrink-0', STATUS_BADGE[s]?.className)}
+                  <div key={node.id} className="rounded-md border overflow-hidden">
+                    <button
+                      className="w-full flex items-center gap-2 text-xs px-3 py-2 hover:bg-muted/50 transition-colors text-left"
+                      onClick={() => setExpandedLogNode(isExpanded ? null : node.id)}
                     >
-                      {STATUS_BADGE[s]?.label}
-                    </Badge>
-                    <span className="text-muted-foreground">{node.data.label}</span>
+                      <Badge className={cn('text-[10px] h-4 shrink-0', STATUS_BADGE[s]?.className)}>
+                        {STATUS_BADGE[s]?.label}
+                      </Badge>
+                      <span className="flex-1 text-muted-foreground">{node.data.label}</span>
+                      {hasDetail && (
+                        <ChevronRight
+                          className={cn('h-3 w-3 text-muted-foreground transition-transform', isExpanded && 'rotate-90')}
+                        />
+                      )}
+                    </button>
+                    {isExpanded && hasDetail && (
+                      <div className="border-t px-3 py-2 bg-muted/20 max-h-40 overflow-y-auto">
+                        {nodeErrors[node.id] ? (
+                          <p className="text-[11px] text-destructive font-mono whitespace-pre-wrap break-words">
+                            {nodeErrors[node.id]}
+                          </p>
+                        ) : typeof nodeOutputs[node.id] === 'object' && nodeOutputs[node.id] !== null ? (
+                          <JsonTreeView data={nodeOutputs[node.id]} />
+                        ) : (
+                          <pre className="text-[11px] text-muted-foreground whitespace-pre-wrap break-words font-mono">
+                            {String(nodeOutputs[node.id])}
+                          </pre>
+                        )}
+                      </div>
+                    )}
                   </div>
                 )
               })}
