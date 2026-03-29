@@ -25,9 +25,6 @@ No vendor lock-in. Your API keys stay encrypted on your server. You own your wor
 ### Visual Canvas
 Drag nodes from the palette, connect them, configure each step in the side panel, and hit Run. Watch each node animate through idle → running → success in real time.
 
-<!-- Replace with actual GIF: canvas drag-drop and run -->
-![Canvas demo](docs/canvas-demo.gif)
-
 ### 10 Node Types
 
 | Category | Node | What it does |
@@ -52,9 +49,6 @@ SSE streams node status updates from the worker back to the canvas. No polling. 
 ### Execution History
 Every run is stored. Inspect per-node duration, token usage, and cost. Expandable row shows node-level logs.
 
-<!-- Replace with actual screenshot: execution history panel -->
-![History panel](docs/history-panel.png)
-
 ### 4 Built-in Templates
 
 Preview with zero setup using pre-computed demo playback — no API key required.
@@ -65,9 +59,6 @@ Preview with zero setup using pre-computed demo playback — no API key required
 | Sales Intelligence Brief | Multi-step analysis → typed extraction |
 | Sentiment Analyzer | Conditional Branch routing |
 | Data Extractor | Structured JSON schema extraction |
-
-<!-- Replace with actual GIF: template demo playback -->
-![Template demo](docs/template-demo.gif)
 
 ### BYOK — Bring Your Own Key
 API keys are encrypted at rest with AES-256-GCM. The worker decrypts them per-execution in memory. Keys are never logged.
@@ -176,8 +167,8 @@ Export any workflow as a `.flowforge.json` file. Import on any FlowForge instanc
 ### 1. Clone and install
 
 ```bash
-git clone https://github.com/your-username/flowforge.git
-cd flowforge
+git clone https://github.com/MLaitarovsky/FlowForge.git
+cd FlowForge
 npm install
 ```
 
@@ -240,7 +231,6 @@ src/
 │   │   ├── executions/           # Global execution history
 │   │   ├── settings/             # BYOK API key management
 │   │   ├── templates/            # Template gallery
-│   │   ├── error.tsx             # Shared error boundary
 │   │   └── layout.tsx            # App shell (navbar)
 │   ├── (auth)/                   # Login / register pages
 │   └── api/                      # API routes
